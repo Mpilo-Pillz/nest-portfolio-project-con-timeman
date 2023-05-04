@@ -1,0 +1,18 @@
+### Create a new USer
+POST http://localhost:4300/auth/signup
+Content-Type: application/json
+
+{
+    "email": "test@mub.com",
+    "password": "kjfhgkjdflgsd",
+    "admin": true
+}
+
+### Incorrect format for create user
+POST http://localhost:4300/auth/signup
+Content-Type: application/json
+
+{
+    "email": "test",
+    "password": "kjfhgkjdflgsd"
+}
