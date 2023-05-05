@@ -4,8 +4,8 @@ Content-Type: application/json
 
 {
     "email": "test@mub.com",
-    "password": "kjfhgkjdflgsd",
-    "admin": true
+    "password": "pwd123"
+    
 }
 
 ### Incorrect format for create user
