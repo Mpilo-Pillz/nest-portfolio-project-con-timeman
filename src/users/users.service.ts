@@ -36,5 +36,7 @@ export class UsersService {
     if (!user) {
       throw new Error('user not found');
     }
+
+    this.repository.remove(user);
   }
 }
