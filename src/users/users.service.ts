@@ -20,7 +20,15 @@ export class UsersService {
     return this.repository.findOneBy({ id });
   }
 
-  update() {}
+  async update(id: number, userAttributes: Partial<User>) {
+    const user = await this.findOne(id);
+
+    if (!user) {
+      throw new Error('user not found');
+    }
+    Object.assign(user, userAttributes);
+    return this.repository.save(user);
+  }
 
   remove() {}
 }
