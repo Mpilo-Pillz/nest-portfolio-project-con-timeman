@@ -3,7 +3,7 @@ POST http://localhost:4300/auth/signup
 Content-Type: application/json
 
 {
-    "email": "test@mub.com",
+    "email": "dev@mub.com",
     "password": "pwd123"
     
 }
@@ -15,4 +15,21 @@ Content-Type: application/json
 {
     "email": "test",
     "password": "kjfhgkjdflgsd"
+}
+
+### Find a particular user with a given ID
+GET http://localhost:4300/auth/1
+
+### Find all users with a given email
+GET http://localhost:4300/auth?email=dev@mub.com
+
+### Delete user with a given id
+DELETE http://localhost:4300/auth/1
+
+### Update a user
+PATCH http://localhost:4300/auth/2
+Content-Type: application/json
+
+{
+    "password": "password456"
 }
