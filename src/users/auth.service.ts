@@ -3,6 +3,7 @@ import { UsersService } from './users.service';
 import { promisify } from 'util';
 import { scrypt as _scrypt, randomBytes } from 'crypto';
 
+// the built in function is scrript but it works with callbacks. We first turn it to a promise
 const scrypt = promisify(_scrypt);
 
 @Injectable()
@@ -21,7 +22,10 @@ export class AuthService {
     const salt = randomBytes(8).toString('hex');
 
     // hash the salt and the password together
-    const hash = await scrypt(password, salt, 32);
+    const hash = (await scrypt(password, salt, 32)) as Buffer;
+
+    // Join salt and hashed result adding a speatator character
+    const result = salt + '.' + hash.toString('hex');
     // Create a new user and save
     // return the user
   }
