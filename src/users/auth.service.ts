@@ -34,6 +34,7 @@ export class AuthService {
     // Create a new user and save
     const user = await this.usersService.create(email, result);
     // return the user
+    return user;
   }
 
   async signin(email: string, password: string) {

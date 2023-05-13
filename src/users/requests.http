@@ -3,9 +3,18 @@ POST http://localhost:4300/auth/signup
 Content-Type: application/json
 
 {
-    "email": "dev@mub.com",
+    "email": "devsession@mub.com",
     "password": "pwd123"
     
+}
+
+### Login in with hash
+POST http://localhost:4300/auth/signin
+Content-Type: application/json
+
+{
+    "email": "devsafe@mub.com",
+    "password": "pwd123"
 }
 
 ### Incorrect format for create user
@@ -24,10 +33,10 @@ GET http://localhost:4300/auth/1
 GET http://localhost:4300/auth?email=dev@mub.com
 
 ### Delete user with a given id
-DELETE http://localhost:4300/auth/1
+DELETE http://localhost:4300/auth/14563
 
 ### Update a user
-PATCH http://localhost:4300/auth/2
+PATCH http://localhost:4300/auth/254
 Content-Type: application/json
 
 {
