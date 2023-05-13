@@ -46,3 +46,6 @@ Content-Type: application/json
 
 ### Get current logged in user
 GET http://localhost:4300/auth/whoami 
+
+### Sign out
+POST http://localhost:4300/auth/signout
