@@ -42,3 +42,7 @@ Content-Type: application/json
 {
     "password": "password456"
 }
+
+
+### Get current logged in user
+GET http://localhost:4300/auth/whoami 
