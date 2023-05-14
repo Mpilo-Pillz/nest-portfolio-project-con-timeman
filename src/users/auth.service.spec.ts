@@ -54,4 +54,10 @@ describe('AuthService', () => {
       BadRequestException,
     );
   });
+
+  it('throws if signin is called with an unused email', async () => {
+    await expect(service.signin('fsdfs@fsfs.com', 'fsdfre')).rejects.toThrow(
+      NotFoundException,
+    );
+  });
 });
