@@ -60,4 +60,15 @@ describe('AuthService', () => {
       NotFoundException,
     );
   });
+
+  it('throws if an invalid password is provided', async () => {
+    fakeUsersService.find = () =>
+      Promise.resolve([
+        { email: 'test@mail.com', password: 'jkghljg' } as User,
+      ]);
+
+    await expect(service.signin('test@mail.com', 'password')).rejects.toThrow(
+      BadRequestException,
+    );
+  });
 });
