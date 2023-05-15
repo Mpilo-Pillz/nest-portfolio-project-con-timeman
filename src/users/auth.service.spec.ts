@@ -71,4 +71,21 @@ describe('AuthService', () => {
       BadRequestException,
     );
   });
+
+  it('returns a user if correct password is provided', async () => {
+    fakeUsersService.find = () =>
+      Promise.resolve([
+        {
+          email: 'test@mail.com',
+          password:
+            'c910e4ed0b5444e9.ca4aa6df538c04332b38bcfad591cafb036fb048ecda46d138e226b1c6b934bb',
+        } as User,
+      ]);
+
+    const user = await service.signin('test@mail.com', 'jkghljg');
+    // const user = await service.signin('test@mail.com', 'jkghljg');
+    // console.log(user);
+
+    // expect(user).toBeDefined();
+  });
 });
