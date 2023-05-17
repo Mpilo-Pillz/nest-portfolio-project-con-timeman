@@ -7,17 +7,26 @@ import { User } from './users/user.entity';
 import { LeaveModule } from './leave/leave.module';
 import { Leave } from './leave/leave.entity';
 import { APP_PIPE } from '@nestjs/core';
-// import cookieSession from 'cookie-session';
+import { ConfigModule, ConfigService } from '@nestjs/config';
 
 const cookieSession = require('cookie-session');
 
 @Module({
   imports: [
-    TypeOrmModule.forRoot({
-      type: 'sqlite',
-      database: 'db.sqlite',
-      entities: [User, Leave],
-      synchronize: true,
+    ConfigModule.forRoot({
+      isGlobal: true,
+      envFilePath: `.env.${process.env.NODE_ENV}`,
+    }),
+    TypeOrmModule.forRootAsync({
+      inject: [ConfigService],
+      useFactory: (config: ConfigService) => {
+        return {
+          type: 'sqlite',
+          database: config.get<string>('DB_NAME'),
+          entities: [User, Leave],
+          synchronize: true,
+        };
+      },
     }),
     UsersModule,
     LeaveModule,
