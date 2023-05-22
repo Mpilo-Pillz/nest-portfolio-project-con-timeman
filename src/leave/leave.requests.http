@@ -1,0 +1,7 @@
+# Add number of days off
+POST http://localhost:4300/leave
+Content-Type: application/json
+
+{
+    "numberOfDays": 10
+}
