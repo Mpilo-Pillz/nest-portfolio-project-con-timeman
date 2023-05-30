@@ -1,10 +1,12 @@
 import { Exclude } from 'class-transformer';
+import { Leave } from 'src/leave/leave.entity';
 import {
   AfterInsert,
   AfterRemove,
   AfterUpdate,
   Column,
   Entity,
+  OneToMany,
   PrimaryGeneratedColumn,
 } from 'typeorm';
 
@@ -18,6 +20,9 @@ export class User {
 
   @Column()
   password: string;
+
+  @OneToMany(() => Leave, (leave) => leave.user)
+  leaves: Leave[];
 
   @AfterInsert()
   logInsert() {
