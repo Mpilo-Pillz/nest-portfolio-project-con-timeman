@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Leave } from './leave.entity';
 import { Repository } from 'typeorm';
@@ -12,5 +12,18 @@ export class LeaveService {
     const leaveDays = this.repository.create(numberOfDaysDto);
     leaveDays.user = user;
     return this.repository.save(leaveDays);
+  }
+
+  async editNumberOfLeaveDays(id: string, numberOfDays: number) {
+    const leave = await this.repository.findOne({
+      where: { id: parseInt(id) },
+    });
+
+    if (!leave) {
+      throw new NotFoundException('leave not found');
+    }
+
+    leave.numberOfDays = numberOfDays;
+    return this.repository.save(leave);
   }
 }
