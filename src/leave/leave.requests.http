@@ -1,7 +1,15 @@
-# Add number of days off
+### Add number of days off
 POST http://localhost:4300/leave
 Content-Type: application/json
 
 {
     "numberOfDays": 10
+}
+
+### Edit number of days off
+PATCH http://localhost:4300/leave/2
+Content-Type: application/json
+
+{
+    "numberOfDays": 15
 }
