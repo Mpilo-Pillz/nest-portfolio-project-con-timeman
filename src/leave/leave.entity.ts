@@ -6,7 +6,7 @@ export class Leave {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column()
+  @Column({ default: 0 })
   numberOfDays: number;
 
   @ManyToOne(() => User, (user) => user.leaves)

@@ -11,5 +11,5 @@ PATCH http://localhost:4300/leave/2
 Content-Type: application/json
 
 {
-    "numberOfDays": 15
+    "numberOfDays": 12
 }

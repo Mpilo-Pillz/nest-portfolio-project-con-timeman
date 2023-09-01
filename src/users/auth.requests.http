@@ -8,12 +8,31 @@ Content-Type: application/json
     
 }
 
+### Create a new Admin USer
+POST http://localhost:4300/auth/signup
+Content-Type: application/json
+
+{
+    "email": "admin@mub.com",
+    "password": "pwd123"
+    
+}
+
 ### Login in with hash
 POST http://localhost:4300/auth/signin
 Content-Type: application/json
 
 {
     "email": "devsafe@mub.com",
+    "password": "pwd123"
+}
+
+### Admin login in with hash
+POST http://localhost:4300/auth/signin
+Content-Type: application/json
+
+{
+    "email": "admin@mub.com",
     "password": "pwd123"
 }
 
